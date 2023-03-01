@@ -13,7 +13,7 @@
     insert into Football_Venue values
     (20101, 'India', 10001, 90000);
     insert into Football_Venue values
-    (20210, 'Australia', 10021, 100000);
+    (20210, 'Austria', 10021, 100000);
     insert into Football_Venue values
     (30201, 'Argentina', 13054, 80000);
     insert into Football_Venue values
@@ -21,7 +21,7 @@
     insert into Football_Venue values
     (12521, 'Indonesia', 14444, 70000);
     insert into Football_Venue values
-    (13621, 'Australia', 55555, 87500);
+    (13621, 'China', 55555, 87500);
     insert into Football_Venue values
     (54732, 'France', 11116, 99354);
     insert into Football_Venue values
@@ -35,7 +35,7 @@
 
       COUNT(*)
     ----------
-            9
+            10
 ===========================================================
          
 5.select venue_name as Location , capacity as Volume from Football_Venue;
@@ -43,18 +43,19 @@
     LOCATION                                               VOLUME
     -------------------------------------------------- ----------
     India                                                   90000
+    Austria                                                100000
     Argentina                                               80000
     Ireland                                                 75000
     Indonesia                                               70000
-    Australia                                               87500
+    China                                                   87500
     France                                                  99354
     Italy                                                   81359
     Poland                                                  81338
     Australia                                               67394
 
-    9 rows selected.
+    10 rows selected.
 ===========================================================
 6.delete Football_Venue where venue_name = 'Australia';
 
-    3 rows deleted.
+    1 rows deleted.
 ===========================================================
