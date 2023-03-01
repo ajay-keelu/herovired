@@ -56,5 +56,5 @@
 ===========================================================
 6.delete Football_Venue where venue_name = 'Australia';
 
-    2 rows deleted.
+    3 rows deleted.
 ===========================================================
