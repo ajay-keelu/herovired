@@ -1,0 +1,76 @@
+1. Database creation in Oracle SQL
+    create user Employee identified by system ;
+    grant connect, resourse to Employee;
+2. Table creation 
+    create table Employee_Details (
+    emp_id number(4),
+    emp_name varchar2(50),
+    job_name varchar2(50),
+    manager_id number(2),
+    hire_date date,
+    salary number(7,2),
+    dep_id number(2)
+    ); 
+3. Inserting values into tables 
+    insert into Employee_Details values
+    (1111, 'RAJ', 'Developer', 12, '20-mar-1944', 60000, 19);
+    insert into Employee_Details values
+    (1211, 'DURGA RAO', 'Manager', 5, '04-jan-1964', 80000, 22);
+    insert into Employee_Details values
+    (1131, 'DHARMA RAO', 'Designer', 3, '01-aug-1954', 55000, 32);
+    insert into Employee_Details values
+    (1114, 'RENUKA', 'Manager', 5, '04-feb-1949', 65000, 22);
+    insert into Employee_Details values
+    (1521, 'PARVATHI', 'Doctor', 22, '08-jun-1973', 62000, 16);
+    insert into Employee_Details values
+    (1160, 'ARJUN RAO', 'Professor',15, '01-jul-1954', 90000, 8);
+    insert into Employee_Details values
+    (1172, 'AADILAXMI', 'Teacher',6,'01-nov-1944', 57000, 3);
+    insert into Employee_Details values
+    (1120, 'DHANUNJAY', 'President',21, '01-jan-1947', 67000, 1);
+    insert into Employee_Details values
+    (1018, 'YUGANDHAR', 'Welder',19,'16-aug-1983', 85000, 4);
+    insert into Employee_Details values
+    (1180, 'PRAKASH', 'Police', 2, '26-jan-1956', 63000, 3);
+
+4.select salary from Employee_Details;
+        Sample output
+        -------------------------------------------------------
+            SALARY
+        ----------
+            60000
+            80000
+            55000
+            65000
+            62000
+            90000
+            57000
+            67000
+            85000
+            63000
+
+        10 rows selected.
+5. select distinct job_name from Employee_Details;
+        sample output:
+        ------------------------------------------------------------------
+        JOB_NAME
+        --------------------------------------------------
+        Manager
+        Doctor
+        Professor
+        President
+        Designer
+        Developer
+        Welder
+        Police
+        Teacher
+
+        9 rows selected.
+6. update Employee_Details set salary = 50000 where emp_name = 'RAJ';
+
+    1 row updated.
+    select emp_name,salary from Employee_Details where emp_name = 'RAJ' ;
+
+    EMP_NAME                                               SALARY
+    -------------------------------------------------- ----------
+    RAJ                                                     50000

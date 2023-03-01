@@ -1,0 +1,60 @@
+1. Database creation in Oracle SQL
+    create user Football identified by system ;
+    grant connect, resourse to Football;
+2. Table creation 
+    create table Football_Venue(
+      venue_id number(5),
+      venue_name varchar2(50),
+      city_id number(5),
+      capacity number(5)
+    );
+===========================================================
+3. Inserting Values into values 
+    insert into Football_Venue values
+    (20101, 'India', 10001, 90000);
+    insert into Football_Venue values
+    (20210, 'Australia', 10021, 100000);
+    insert into Football_Venue values
+    (30201, 'Argentina', 13054, 80000);
+    insert into Football_Venue values
+    (42122, 'Ireland', 12111, 75000);
+    insert into Football_Venue values
+    (12521, 'Indonesia', 14444, 70000);
+    insert into Football_Venue values
+    (13621, 'Australia', 55555, 87500);
+    insert into Football_Venue values
+    (54732, 'France', 11116, 99354);
+    insert into Football_Venue values
+    (19832, 'Italy', 13773, 81359);
+    insert into Football_Venue values
+    (21932, 'Poland', 12821, 81338);
+    insert into Football_Venue values
+    (12654, 'Australia', 95555, 67394);
+===========================================================
+4. SELECT COUNT(*) FROM Football_Venue;
+
+      COUNT(*)
+    ----------
+            9
+===========================================================
+         
+5.select venue_name as Location , capacity as Volume from Football_Venue;
+
+    LOCATION                                               VOLUME
+    -------------------------------------------------- ----------
+    India                                                   90000
+    Argentina                                               80000
+    Ireland                                                 75000
+    Indonesia                                               70000
+    Australia                                               87500
+    France                                                  99354
+    Italy                                                   81359
+    Poland                                                  81338
+    Australia                                               67394
+
+    9 rows selected.
+===========================================================
+6.delete Football_Venue where venue_name = 'Australia';
+
+    2 rows deleted.
+===========================================================
