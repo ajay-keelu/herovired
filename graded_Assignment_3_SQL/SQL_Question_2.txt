@@ -31,7 +31,7 @@
     insert into Football_Venue values
     (12654, 'Australia', 95555, 67394);
 ===========================================================
-4. SELECT COUNT(*) FROM Football_Venue;
+4. select count(*) from Football_Venue;
 
       COUNT(*)
     ----------
