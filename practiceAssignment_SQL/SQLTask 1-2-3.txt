@@ -1,0 +1,154 @@
+create table worker(
+work_id number(10) primary key,
+first_name varchar2(20) not null,
+last_name varchar2(20) not null,
+salary number(10) ,
+joining_date timestamp ,
+department varchar2(20) not null
+);
+
+insert into worker values(001,'Monika','Arora',100000,to_timestamp('2014-02-20 09:00:00','yyyy-mm-dd hh24:mi:ss'),'HR');
+insert into worker values(002,'Niharika','Verma',80000,to_timestamp('2014-06-11 09:00:00','yyyy-mm-dd hh24:mi:ss'),'Admin');
+insert into worker values(003,'Vishal','Singhal',300000,to_timestamp('2014-02-20 09:00:00','yyyy-mm-dd hh24:mi:ss'),'HR');
+insert into worker values(004,'Amitabh','Singh',500000,to_timestamp('2014-02-11 09:00:00','yyyy-mm-dd hh24:mi:ss'),'Admin');
+insert into worker values(005,'Vivek','Bhati',500000,to_timestamp('2014-06-11 09:00:00','yyyy-mm-dd hh24:mi:ss'),'Admin');
+insert into worker values(006,'Vipul','Diwan',200000,to_timestamp('2014-06-11 09:00:00','yyyy-mm-dd hh24:mi:ss'),'Account');
+insert into worker values(007,'Sathish','Kumar',75000,to_timestamp('2014-01-20 09:00:00','yyyy-mm-dd hh24:mi:ss'),'Account');
+insert into worker values(008,'Geetika','Chauhan',90000,to_timestamp('2014-04-11 09:00:00','yyyy-mm-dd hh24:mi:ss'),'Admin');
+
+
+
+
+TASK - 1
+
+
+=============================================================================================================================
+Q1 ] 
+
+select first_name as WORKER_NAME from worker;
+
+=============================================================================================================================
+Q2]
+
+Select INSTR(first_name,'a') from Worker where first_name = 'Amitabh'; 
+
+=============================================================================================================================
+Q3]
+
+select replace(first_name,'a','A' from worker;
+
+=============================================================================================================================
+Q4]
+
+select * from worker order by first_name asc;
+
+=============================================================================================================================
+Q5]
+
+select * from worker order by first_name asc,department desc;
+
+=============================================================================================================================
+Q6]
+
+select * from worker where first_name in ('Vipul','Sathish');
+
+=============================================================================================================================
+Q7]
+
+select * from worker where department='Admin';
+
+=============================================================================================================================
+Q8]
+
+select * from worker where first_name like '%a%';
+
+=============================================================================================================================
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TASK - 2
+
+
+
+============================================================================================================================
+Q9]
+
+select * from worker where salary between 100000 and 500000 ;
+
+============================================================================================================================
+Q10]
+
+select * from worker where length(first_name) = 6 and right(first_name,1) = 'h' ;
+
+============================================================================================================================
+Q11]
+
+select * from worker where joining_date between timestamp '2014-02-01 00:00:00' and timestamp '2014-02-28 23:59:59' ;
+
+============================================================================================================================
+Q12]
+
+select concat(first_name,last_name) as FULL_NAME , salary from worker where salary between 50000 and 100000 ;
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+TASK - 3
+
+
+
+
+create table salesman(
+salesman_id number(4) primary key,
+name varchar2(20) not null,
+city varchar2(20),
+commission number(4)
+);
+insert into salesman values(5501,'JamesHoog','NewYork',0.15);
+insert into salesman values(5502,'NailKnite','Paris',0.13);
+insert into salesman values(5505,'PitAlex','London',0.11);
+insert into salesman values(5506,'McLyon','Paris',0.14);
+insert into salesman values(5507,'PaulAdam','Rome',0.13);
+insert into salesman values(5503,'LausenHen','SanJose',0.12);
+
+======================================================================================================
+
+create table customer(
+customer_id number(4) primary key,
+cust_name varchar2(20) not null,
+city varchar2(20) not null,
+grade number(5),
+salesman_id number(10),
+foreign key (salesman_id) references salesman(salesman_id)
+);
+
+insert into customer values(3002,'Nick Rimando','NewYork',100,5001);
+insert into customer values(3007,'Brand Davis','NewYork',200,5001);
+insert into customer values(3005,'Graham Zusi','California',200,5002);
+insert into customer values(3008,'Julian Green','London',300,5002);
+insert into customer values(3004,'Fabian Johnson','Paris',300,5006);
+insert into customer values(3004,'Geoff Cameron','Berlin',100,5003);
+insert into customer values(3003,'Jozy Altidor','Moscow',200,5007);
+insert into customer values(3001,'Brad Guzan','London',null,5005);
+
+======================================================================================================
+Q13]
+
+select salesman.name as "Salesman",customer.cust_name, customer.city from salesman,customer 
+where salesman.city=customer.city;
+
+======================================================================================================
+Q14]
+
+select a.cust_name as "Customer Name", a.city, b.name as "Salesman", b.commission 
+from customer a inner join salesman b on a.salesman_id=b.salesman_id;
+
+======================================================================================================
+Q15]
+
+select a.cust_name as "Customer Name", a.city, b.name as "Salesman", b.commission from customer a
+ inner join salesman b on a.salesman_id=b.salesman_id where b.commission>.12;
+
+======================================================================================================
+
+
