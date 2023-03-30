@@ -1,0 +1,944 @@
+Question 1: Java 1D Array
+-------------------------
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {	   
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        int a[]=new int[n];
+        for(int i=0;i<n;i++)
+            a[i]=scan.nextInt();
+        scan.close();
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
+    }
+}
+============================================================================================================================================================================================
+Question 2: Java 2D Array
+-------------------------
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int arr[][] = new int[6][6];
+        for(int i = 0 ; i < 6 ; i++)
+            for(int j = 0 ; j < 6 ; j++)
+                arr[i][j] = sc.nextInt();
+        sc.close();
+        int mx = Integer.MIN_VALUE;
+        for(int i = 0 ; i < 4 ; i++ ) {
+            for(int j = 0 ; j < 4 ; j++)
+                mx= Math.max(mx, hs(arr,i,j));
+        }
+        System.out.println(mx);
+    }
+    public static int hs(int arr[][],int i,int j) {
+        int sm = 0;
+        if(i < 4 && j < 4) {
+            for(int a = i ; a < i+3 ; a++) {
+                for(int b = j ; b < j+3 ; b++) {
+                    sm += arr[a][b];
+                }
+            }
+            sm  = sm - arr[i+1][j] - arr[i+1][j+2];
+        }
+        return sm;
+    }
+}
+
+============================================================================================================================================================================================
+Question 3: Java Subarray
+-------------------------
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        long count = 0;
+        int[] arr = new int[n];
+        for(int i = 0 ; i < n ; i++)
+            arr[i] = sc.nextInt();
+        for(int i = 0;i < n ; i++){
+            for(int j = i ; j <n ; j++){
+                long sum = 0;
+                for(int k = i ; k <= j ; k++)
+                    sum += arr[k];
+                if(sum < 0)
+                    count++;
+            }
+        }
+        sc.close();
+        System.out.println(count);
+    }
+}
+
+
+============================================================================================================================================================================================
+Question 4: Java Arraylist
+--------------------------
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<List<Integer>>li = new ArrayList<>();
+        int t;
+        t = sc.nextInt();
+        while(t-- > 0){
+            int n = sc.nextInt();
+            List<Integer>ar = new ArrayList<>();
+            for(int i = 0 ; i < n ; i++){
+                int n1 = sc.nextInt();
+                ar.add(n1);
+            }
+            li.add(ar);
+        }
+        t = sc.nextInt();
+        while(t-- > 0){
+            int x,y;
+            x = sc.nextInt();x--;
+            y = sc.nextInt();y--;
+            if(x >= li.size()){
+                System.out.println("ERROR!");
+                continue;
+            }
+            List<Integer>temp = li.get(x);
+            if(y >= temp.size()){
+                System.out.println("ERROR!");
+                continue;
+            }
+            System.out.println(temp.get(y));
+        }
+    }
+}
+============================================================================================================================================================================================
+Question 5: Java 1D Array (Part 2)
+----------------------------------
+import java.util.*;
+
+public class Solution {
+
+    public static boolean canWin(int leap, int[] game,int index) {
+       if(index<0|| game[index]==1){
+           return false;
+       }
+       if(index+1> game.length-1||index+leap>game.length-1){
+           return true;
+       }
+       game[index]=1;
+       return canWin(leap, game, index-1)||canWin(leap, game, index+1)||canWin(leap, game, index+leap);
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int q = scan.nextInt();
+        while (q-- > 0) {
+            int n = scan.nextInt();
+            int leap = scan.nextInt();
+            
+            int[] game = new int[n];
+            for (int i = 0; i < n; i++) {
+                game[i] = scan.nextInt();
+            }
+
+            System.out.println( (canWin(leap, game,0)) ? "YES" : "NO" );
+        }
+        scan.close();
+    }
+}
+
+
+============================================================================================================================================================================================
+Question 6: Java List
+---------------------
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+public class Solution {
+    public static void main(String[] args) {
+        List<Integer> li=new  ArrayList<Integer>();
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        for(int i = 0 ; i < n ; i++){
+	    int num = sc.nextInt();
+            li.add(num);
+	}      
+        int q=sc.nextInt();
+        for(int i = 0;i < q;i++)
+        {
+            String str=sc.next();            
+            if(str.equals("Insert")){
+                int ind = sc.nextInt();
+                int num=sc.nextInt();
+                li.add(ind,num);
+            }
+            if(str.equals("Delete")){
+                int ind=sc.nextInt();
+                li.remove(ind);
+            }
+        }
+        for(int e:li)
+            System.out.print(e+" ");
+    }
+}
+===========================================================================================================================================================================================
+Question 7: Java Stack
+----------------------
+import java.util.*;
+class Solution{
+	
+	public static void main(String []argh)
+	{
+		Scanner sc = new Scanner(System.in);
+		while (sc.hasNext()) {
+			String input=sc.next();
+            		System.out.println(valid(input));
+		}
+		
+	}
+    static boolean valid(String s) 
+    {
+        Stack<Character>st = new Stack<>();
+        for(char c : s.toCharArray()){
+            if(st.isEmpty()){
+                if(c == '{' || c == '(' || c == '[')
+                    st.push(c);
+                else
+                    return false;
+            }else{
+                if(c == '{' || c == '(' || c == '[')
+                    st.push(c);
+                else{
+                    if((c == ')' && st.peek() == '(') || (c == '}' && st.peek() == '{') || (c == ']' && st.peek() == '['))
+                        st.pop();
+                    else
+                        return false;
+                }
+            }
+        }
+        return st.isEmpty();
+    }
+}
+============================================================================================================================================================================================
+Question 8: Java Hashset
+------------------------
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+public class Solution {
+ public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int t = s.nextInt();
+        String [] pair_left = new String[t];
+        String [] pair_right = new String[t];        
+        for (int i = 0; i < t; i++) {
+            pair_left[i] = s.next();
+            pair_right[i] = s.next();
+        }
+        Set<String>set = new HashSet<>();
+        for(int i = 0 ; i < t ; i++ ){
+            String st = pair_left[i]+" "+pair_right[i];
+            set.add(st);
+            System.out.println(set.size());
+        }
+    }
+}
+============================================================================================================================================================================================
+Question 9: Java Comparator
+---------------------------
+import java.util.*;
+class Checker implements Comparator<Player>{
+    public int compare(Player player1, Player player2){
+        if(player1.score == player2.score){ 
+            return player1.name.compareTo(player2.name);
+        }
+        if(player1.score > player2.score)
+            return -1;
+        return 1;
+    }
+}
+class Player{
+    String name;
+    int score;
+    
+    Player(String name, int score){
+        this.name = name;
+        this.score = score;
+    }
+}
+class Solution {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        Player[] player = new Player[n];
+        Checker checker = new Checker();        
+        for(int i = 0; i < n; i++){
+            player[i] = new Player(scan.next(), scan.nextInt());
+        }
+        scan.close();     
+        Arrays.sort(player, checker);
+        for(int i = 0; i < player.length; i++){
+            System.out.printf("%s %s\n", player[i].name, player[i].score);
+        }
+    }
+}
+============================================================================================================================================================================================
+Question 10: Java Generics
+---------------------------	
+import java.io.IOException;
+import java.lang.reflect.Method;
+class Printer
+{
+    <Generic> void printArray(Generic[] arr){
+       for(Generic i: arr)
+            System.out.println(i);
+   }
+ 
+}
+public class Solution {
+    public static void main( String args[] ) {
+        Printer myPrinter = new Printer();
+        Integer[] intArray = { 1, 2, 3 };
+        String[] stringArray = {"Hello", "World"};
+        myPrinter.printArray(intArray);
+        myPrinter.printArray(stringArray);
+        int count = 0;
+        for (Method method : Printer.class.getDeclaredMethods()) {
+            String name = method.getName();
+            if(name.equals("printArray"))
+                count++;
+        }
+        if(count > 1)System.out.println("Method overloading is not allowed!");      
+    }
+}
+
+
+
+===========================================================================================================================================================================================
+Question 11: Java Sort
+----------------------
+import java.util.*;
+
+class Student{
+	private int id;
+	private String fname;
+	private double cgpa;
+	public Student(int id, String fname, double cgpa) {
+		super();
+		this.id = id;
+		this.fname = fname;
+		this.cgpa = cgpa;
+	}
+	public int getId() {
+		return id;
+	}
+	public String getFname() {
+		return fname;
+	}
+	public double getCgpa() {
+		return cgpa;
+	}
+}
+
+public class Solution
+{
+    public static void sort(Student[] arr){
+        int n = arr.length;
+        for(int i = 0 ; i < n ; i++){
+            for(int j = 0 ; j < n - i - 1  ; j++){
+                if(arr[j].getCgpa()==arr[j+1].getCgpa()){
+                    if(arr[j].getFname().compareTo(arr[j+1].getFname())>0){
+                        Student temp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = temp;
+                    }
+                }
+                if(arr[j].getCgpa()<arr[j+1].getCgpa()){
+                    Student temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+    }
+	public static void main(String[] args){
+		Scanner in = new Scanner(System.in);
+		int testCases = Integer.parseInt(in.nextLine());
+		
+		List<Student> studentList = new ArrayList<Student>();
+		while(testCases>0){
+			int id = in.nextInt();
+			String fname = in.next();
+			double cgpa = in.nextDouble();
+			
+			Student st = new Student(id, fname, cgpa);
+			studentList.add(st);
+			
+			testCases--;
+		}
+        Student[] arr = new Student[studentList.size()];
+        for(int i = 0 ; i < studentList.size() ; i++)
+            arr[i]  = studentList.get(i);
+        sort(arr);
+      	for(Student st: arr){
+			System.out.println(st.getFname());
+		}
+	}
+}
+============================================================================================================================================================================================
+
+
+Question 12: Java Dequeue
+--------------------------
+import java.io.*;
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Deque<Integer> dq = new ArrayDeque<>();
+        Set<Integer> set = new HashSet<>();
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        int mx=0;
+        for (int i = 0; i < n; i++) {
+            int t = sc.nextInt();
+            dq.add(t);
+            set.add(t);
+            if(dq.size() > m){
+                int tm = dq.pop();
+                if(!dq.contains(tm)){ 
+                    set.remove(tm); 
+                }
+            }
+            if(dq.size() == m){
+                mx = Math.max(set.size(),mx);
+            }
+        }
+        System.out.println(mx);
+    }
+}
+===========================================================================================================================================================================================
+Question 13: Java BitSet
+------------------------
+import java.io.*;
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        BitSet b1=new BitSet(n);
+        BitSet b2=new BitSet(n);
+        for(int i=1;i<=m;i++) {
+            String op=sc.next();
+            int x=sc.nextInt();
+            int y=sc.nextInt();
+            if(op.equals("AND")) {
+                if(x==1) 
+                    b1.and(b2);
+                else 
+                    b2.and(b1); 
+            }
+            else if(op.equals("OR")) {
+                if(x==1) 
+                    b1.or(b2);
+                else 
+                    b2.or(b1); 
+            }
+            else if(op.equals("XOR")) {
+                if(x==1) 
+                    b1.xor(b2); 
+                else 
+                    b2.xor(b1); 
+            }
+            else if(op.equals("SET")) {
+                if(x==1)  
+                    b1.set(y, true); 
+                else 
+                    b2.set(y,true);  
+            }
+            else if(op.equals("FLIP")) {
+                if(x==1) 
+                    b1.flip(y); 
+                else 
+                    b2.flip(y);
+            }
+            System.out.println(b1.cardinality()+" "+b2.cardinality());
+        }
+    }
+}
+============================================================================================================================================================================================
+Question 14: Java Priority Queue
+--------------------------------
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.*;
+class Priorities{   
+    public List<Student> getStudents(List<String> events){
+        PriorityQueue<Student> pq = new PriorityQueue<>();        
+        for (String str : events) {
+            String[] event =str.split(" ");            
+            switch(event[0]){
+                case "ENTER":{                                       
+                    String name= event[1];
+                    int id= Integer.valueOf(event[3]);
+                    double cgpa= Double.valueOf(event[2]); 
+                    Student student = new Student(id,name,cgpa);
+                    pq.add(student);
+                    break;                  
+                }
+                case "SERVED":{
+                    pq.poll();
+                    break;
+                }
+            }
+        }
+        List<Student> temp = new ArrayList<>();
+        while (!pq.isEmpty()) {
+            temp.add(pq.poll());
+         }
+        return temp;
+    }
+}
+class Student implements Comparable<Student>{
+    private int id;
+    private String name;
+    private double cgpa;
+    public Student(int id, String name, double cgpa){
+        this.id=id;
+        this.name=name;
+        this.cgpa=cgpa;
+    }    
+    public int compareTo(Student s){
+        if(cgpa==s.getCgpa() && name.compareTo(s.getName())==0) return id-s.getId();
+        if(cgpa==s.getCgpa()) return name.compareTo(s.getName());
+        if(cgpa>s.getCgpa()) return -1;
+         else return 1;  
+    }    
+    public int getId(){
+        return id;
+    }
+    public String getName(){
+        return name;
+    }
+    public double getCgpa(){
+        return cgpa;
+    } 
+}
+public class Solution {
+    private final static Scanner scan = new Scanner(System.in);
+    private final static Priorities priorities = new Priorities();    
+    public static void main(String[] args) {
+        int totalEvents = Integer.parseInt(scan.nextLine());    
+        List<String> events = new ArrayList<>();        
+        while (totalEvents-- != 0) {
+            String event = scan.nextLine();
+            events.add(event);
+        }        
+        List<Student> students = priorities.getStudents(events);
+        
+        if (students.isEmpty()) {
+            System.out.println("EMPTY");
+        } else {
+            for (Student st: students) {
+                System.out.println(st.getName());
+            }
+        }
+    }
+}
+
+
+
+
+
+
+===========================================================================================================================================================================================
+
+
+Question 15: Java Substring Comparisons
+---------------------------------------
+
+
+import java.io.*;
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        int k = sc.nextInt();
+        String s1 = ""; 
+        String s2 = "";
+        for(int i=0;i<=str.length()-k;i++){
+            int r=i+k;
+            String sbt = str.substring(i,r);
+            if(sbt.compareTo(s2)>0){
+                s2=sbt;
+            }
+            if(sbt.compareTo(s1)<0){
+                s1=sbt;
+            }
+            if(i==0){
+                s1=sbt;
+            }
+        }
+        System.out.println(s1);
+        System.out.println(s2);
+    }
+}
+
+
+============================================================================================================================================================================================
+
+
+Question 16: Java String Reverse
+--------------------------------
+
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String str=sc.next();
+        int f=0;
+        for(int i=0;i<str.length()/2;i++){
+            if(str.charAt(i)!=str.charAt(str.length()-i-1)){
+                f=1;
+                break;
+            }
+        }
+        if(f==0)
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+    }
+}
+
+
+
+===========================================================================================================================================================================================
+
+
+Question 17: Java Anagrams
+--------------------------
+
+
+import java.io.*;
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String a=sc.next();
+        String b=sc.next();
+        a=a.toLowerCase();
+        b=b.toLowerCase();
+        char ar[]=a.toCharArray();
+        char br[]=b.toCharArray();
+        Arrays.sort(ar);
+        Arrays.sort(br);
+        int f=1;
+        if(a.length()==b.length())
+        {
+            for(int i=0;i<ar.length;i++)
+            {
+                if(ar[i]!=br[i])
+                {
+                    f=0;
+                    System.out.println("Not Anagrams");
+                    break;
+                }
+            }
+            if(f==1)
+            System.out.println("Anagrams");
+        }
+        else
+        System.out.println("Not Anagrams");
+    }
+}
+
+
+
+============================================================================================================================================================================================
+
+
+Question 18: Java String Tokens
+-------------------------------
+
+
+import java.io.*;
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        ArrayList<String> al=new ArrayList<>();
+        String st="";
+        for(int i=0;i<str.length();i++)
+        {
+            char ch=str.charAt(i);
+            if(Character.isAlphabetic(ch))
+                st+=ch+"";
+            else
+            {
+                if(!st.equals(""))
+                    al.add(st);
+                st="";
+            }
+        }
+        if(!st.equals(""))
+                al.add(st);
+        System.out.println(al.size());
+        for(String t:al)
+            System.out.println(t);
+    }
+}
+
+
+
+============================================================================================================================================================================================
+
+
+Question 19: Pattern Syntax Checker
+-----------------------------------
+
+
+import java.io.*;
+import java.util.*;
+import java.util.regex.*;
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner (System.in);
+        String st=sc.nextLine();
+        int n = Integer.parseInt(st);
+        while (n>0 && sc.hasNextLine()) {
+            String exp  = sc.nextLine();
+            try {
+                Pattern r = Pattern.compile(exp);
+                System.out.println("Valid");
+            }
+            catch (PatternSyntaxException e) {
+                System.out.println("Invalid");
+            }
+        }
+    }
+}
+
+
+
+===========================================================================================================================================================================================
+
+
+Question 20: Java Regex
+-----------------------
+
+
+import java.io.*;
+import java.util.*;
+class MyRegex {
+    String pattern = "((([0-1]?[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))\\.){3}(([0-1]?[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))";
+}
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            String str = sc.next();
+            System.out.println(str.matches(new MyRegex().pattern));
+        }
+    }
+}
+
+
+============================================================================================================================================================================================
+
+
+
+Question 21: Java Regex 2 - Duplicate Words
+-------------------------------------------
+
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DuplicateWords {
+
+    public static void main(String[] args) {
+ String regex = "\\b(\\w+)(\\s+\\1\\b)+";
+    Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+
+    Scanner in = new Scanner(System.in);
+    int numSentences = Integer.parseInt(in.nextLine());
+
+    while (numSentences-- > 0) {
+        String input = in.nextLine();
+
+        Matcher m = p.matcher(input);
+
+        // Check for subsequences of input that match the compiled pattern
+        while (m.find()) {
+            input = input.replaceAll("(?i)"+m.group(), m.group(1));
+        }
+        // Prints the modified sentence.
+        System.out.println(input);
+    }
+
+    in.close();
+    }
+}
+
+
+============================================================================================================================================================================================
+
+
+Question 22: Valid Username Regular Expression
+-----------------------------------------------
+
+
+import java.util.Scanner;
+class UsernameValidator {   
+    public static final String regularExpression = "[a-zA-Z]\\w{7,29}";
+}
+public class Solution {
+    private static final Scanner sc = new Scanner(System.in);    
+    public static void main(String[] args) {
+        int n = Integer.parseInt(sc.nextLine());
+        while (n-->0) {
+            String userName = sc.nextLine();
+
+            if (userName.matches(UsernameValidator.regularExpression)) {
+                System.out.println("Valid");
+            } else {
+                System.out.println("Invalid");
+            }           
+        }
+    }
+}
+
+
+
+============================================================================================================================================================================================
+Question 23: Java Primality Test
+--------------------------------
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        String n = bufferedReader.readLine();
+        BigInteger big=new BigInteger(n);
+        boolean isPrime=big.isProbablePrime(13);
+        System.out.println(isPrime?"prime ":"not prime");
+        bufferedReader.close();
+    }
+}
+
+
+
+============================================================================================================================================================================================
+
+
+Question 24: Java Currency Formatter
+------------------------------------
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double money = scanner.nextDouble();
+        scanner.close();
+        String us = NumberFormat.getCurrencyInstance(Locale.US).format(payment); 
+        String india = NumberFormat.getCurrencyInstance(new Locale("en", "in")).format(payment); 
+        String china = NumberFormat.getCurrencyInstance(Locale.CHINA).format(payment);
+        String france = NumberFormat.getCurrencyInstance(Locale.FRANCE).format(payment); 
+        System.out.println("US: " + us);
+        System.out.println("India: " + india);
+        System.out.println("China: " + china);
+        System.out.println("France: " + france);
+    }
+}
+
+
+
+===========================================================================================================================================================================================
+
+
+Question 25: Java Tag Content Extractor
+---------------------------------------
+
+
+import java.io.*;
+import java.util.*;
+import java.util.regex.*;
+public class Solution {
+    public static void main(String[] args) {
+        String regex = "<(.+)>([^<>]+)</(\\1)>";
+        Pattern pat = Pattern.compile(regex);
+        Scanner sc = new Scanner(System.in);
+        int t = Integer.parseInt(sc.nextLine());
+        while (t-- > 0) {
+            String str = sc.nextLine();
+            Matcher mat = pat.matcher(str);
+            if (mat.find()) {
+                mat.reset();
+                while (mat.find()) {
+                    System.out.println(mat.group(2));
+                }
+            } 
+            else {
+                System.out.println("None");
+            }
+        }
+    }
+}
+
+
+============================================================================================================================================================================================
