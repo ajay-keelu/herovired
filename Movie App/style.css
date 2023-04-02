@@ -5,6 +5,9 @@
     box-sizing: border-box;
     font-family: 'Alkatra', cursive;
 }
+::-webkit-scrollbar{
+    scroll-behavior: smooth;
+}
 body{
     min-height: 100vh;
     background: rgb(77, 76, 76);
@@ -57,6 +60,56 @@ input{
     border: none;   
 }
 .container{
-    display: flex;
     color: white;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    transition: all .7s ease-in-out;
+    height: 100vh;
+}
+.container .image{
+    position: relative;
+    margin: 10px;
+    transition: all .7s ease-in-out;
+    cursor: pointer;
+    height: 420px;
+    width: 320px;
+}
+.rating{
+    background: rgba(0, 0, 0, 0.432);
+    padding: 8px 15px;
+    border-radius: 25px;
+    z-index: 2;
+}
+.container .image img{
+    position: absolute;
+    height:400px;
+    width:300px;
+}
+.resultsNotFound{
+    color: #FFF;
+}
+.container .image .rating{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: yellow;
+}
+.desc{
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    height:400px;
+    width:300px;
+    top: 400;
+    display: none;
+    font-size: 18px;
+    color: white;
+    background: rgba(0, 0, 0, 0.178);
+    backdrop-filter: blur(15px);
+    overflow-y: scroll;
+}
+.image:hover .desc{
+    display: block;
+    top:0;
 }
